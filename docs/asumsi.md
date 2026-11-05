@@ -30,3 +30,5 @@ Salin setiap pertanyaan ambigu (nomor 1 sampai 7) ke sini dan jawab. Contoh:
 Tambahkan di sini keputusan lain yang Anda ambil: rumus denda progresif, perubahan skema database, format error API, dan seterusnya.
 
 Minggu 2: nama atau kode yang hanya berisi spasi dianggap kosong (isBlank). Setter status dan kondisi melempar IllegalArgumentException untuk nilai null.
+
+   Minggu 5: DendaProgresif = denda flat ditambah (hari - 7) x denda satu hari untuk hari ke-8 dan seterusnya (tarif berlipat dua setelah 7 hari). Hari negatif ditolak lewat aset.hitungDenda.

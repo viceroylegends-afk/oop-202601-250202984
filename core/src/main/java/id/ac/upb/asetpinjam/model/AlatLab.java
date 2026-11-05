@@ -33,6 +33,6 @@ public class AlatLab extends Aset {
 
     @Override
     public long hitungDenda(int hariTerlambat) {
-        return super.hitungDenda(hariTerlambat) * 4;
+        return dendaDasar(hariTerlambat) * 4;
     }
 }
