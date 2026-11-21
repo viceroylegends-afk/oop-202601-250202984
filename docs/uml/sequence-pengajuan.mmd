@@ -1,0 +1,26 @@
+sequenceDiagram
+    autonumber
+    actor Klien as Klien (pemanggil)
+    participant J as JadwalPeminjaman
+    participant P as Peminjaman
+    participant A as Aset
+
+    Klien->>P: new Peminjaman(id, peminjam, aset, mulai, selesai)
+    P-->>Klien: peminjaman baru berstatus DIAJUKAN
+    Klien->>J: ajukan(baru)
+    J->>J: bentrok(baru)
+
+    alt skenario bentrok: aset yang sama sudah terpakai di rentang waktu itu
+        J-->>Klien: throw PeminjamanBentrokException
+    else skenario sukses: tidak bentrok
+        J->>P: getAset()
+        P-->>J: aset
+        J->>A: getJenis()
+        A-->>J: jenis aset
+        alt jenis LAPTOP dan peminjam sudah memegang laptop sebanyak kuota
+            J-->>Klien: throw KuotaHabisException
+        else bukan laptop atau kuota masih tersedia
+            J->>J: tambah(baru)
+            J-->>Klien: pengajuan tersimpan
+        end
+    end
